@@ -1,0 +1,11 @@
+---
+- name: Get sh script for install docker
+  uri:
+
+
+
+#- name: Install docker
+#  shell:
+#    cmd: "curl -fsSL https://get.docker.com -o - | sh"
+#    creates: "/usr/bin/dockerd"
+#    warn: false

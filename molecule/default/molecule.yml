@@ -1,0 +1,31 @@
+---
+driver:
+  name: docker
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
+platforms:
+  - name: Ubuntu-18.04
+    image: vstconsulting/images:ubuntu
+provisioner:
+  name: ansible
+  log: true
+  options:
+    vvv: true
+verifier:
+  name: testinfra
+  options:
+    vv: true
+scenario:
+  test_sequence:
+    - dependency
+    - lint
+    - destroy
+    - syntax
+    - create
+    - converge
+    - idempotence
+    - cleanup
+    - destroy
