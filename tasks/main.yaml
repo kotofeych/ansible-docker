@@ -1,11 +1,17 @@
 ---
-- name: Get sh script for install docker
-  uri:
+- name: Check script docker install
+  stat:
+    path: "{{ path_to_script_docker_install }}"
+  register: check_script_docker_install
 
+- name: Get script for install docker
+  get_url:
+    url: "{{ url_script_docker }}"
+    dest: "{{ path_to_script_docker_install }}"
+  when: not check_script_docker_install.stat.exists
 
-
-#- name: Install docker
-#  shell:
-#    cmd: "curl -fsSL https://get.docker.com -o - | sh"
-#    creates: "/usr/bin/dockerd"
-#    warn: false
+- name: Install docker
+  shell:
+    cmd: "{{ path_to_script_docker_install }}"
+    creates: "/usr/bin/dockerd"
+    warn: false
