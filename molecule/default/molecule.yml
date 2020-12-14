@@ -7,8 +7,10 @@ lint: |
   ansible-lint
   flake8
 platforms:
-  - name: Ubuntu-18.04
+  - name: vstconsulting-ubuntu-18.04
     image: vstconsulting/images:ubuntu
+  - name: vstconsulting-centos7
+    image: vstconsulting/images:centos7
 provisioner:
   name: ansible
   log: true
@@ -26,4 +28,5 @@ scenario:
     - create
     - converge
     - idempotence
+    - verify
     - destroy
