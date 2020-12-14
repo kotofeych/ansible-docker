@@ -1,0 +1,4 @@
+.venv/
+.idea/
+.tox/
+molecule/default/tests/__pycache__/
