@@ -1,5 +1,5 @@
 ---
-- name: Check script docker install
+- name: Check dockerd bin
   stat:
     path: "{{ path_to_docker_bin }}"
   register: check_docker_bin
