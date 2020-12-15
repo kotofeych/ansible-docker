@@ -1,3 +1,4 @@
 ---
 url_script_docker: "https://get.docker.com"
 path_to_script_docker_install: "/tmp/install_docker.sh"
+path_to_docker_bin: "/usr/bin/dockerd"

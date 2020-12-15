@@ -1,16 +1,16 @@
 ---
 - name: Check script docker install
   stat:
-    path: "{{ path_to_script_docker_install }}"
-  register: check_script_docker_install
+    path: "{{ path_to_docker_bin }}"
+  register: check_docker_bin
 
-- name: Get script for install docker
-  get_url:
-    url: "{{ url_script_docker }}"
-    dest: "{{ path_to_script_docker_install }}"
-  when: not check_script_docker_install.stat.exists
+- name: Install docker-ce
+  block:
+    - name: Get script for install docker
+      get_url:
+        url: "{{ url_script_docker }}"
+        dest: "{{ path_to_script_docker_install }}"
 
-- name: Install docker
-  command:
-    cmd: "sh {{ path_to_script_docker_install }}"
-    creates: "/usr/bin/dockerd"
+    - name: Install docker
+      command: "sh {{ path_to_script_docker_install }}"
+  when: not check_docker_bin.stat.exists

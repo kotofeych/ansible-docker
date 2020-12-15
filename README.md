@@ -1,11 +1,14 @@
 # About role
 Ansible role for automated install `docker-ce` on the instance.
 
+
 # Using variables
 | **Inventory**               | **Description**             |
 | --------------------------- | --------------------------- |
 | `url_script_docker` | URL-address the script for install `docker-ce`. (Default: `https://get.docker.com`) |
 | `path_to_script_docker_install` | Path the script installing `docker-ce`. (Default: `/tmp/install_docker.sh`) |
+| `path_to_docker_bin` | Path to docker bin file. (Default: `/usr/bin/dockerd`) |
+
 
 # Example playbook
 ```yaml
