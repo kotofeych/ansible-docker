@@ -5,6 +5,7 @@
   register: check_docker_bin
 
 - name: Install docker-ce
+  become: yes
   block:
     - name: Get script for install docker
       get_url:
